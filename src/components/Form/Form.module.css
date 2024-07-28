@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-bottom: 1rem;
 }
 
 .form input[type="text"],
@@ -25,17 +26,31 @@
     cursor: pointer;
 }
 
-.form ::placeholder {
-    color: var(--white);
+.form input[type="text"]::placeholder {
+    color: rgb(139, 139, 139)
+}
+
+.form label {
+    margin-right: 12px;
+}
+
+.form button:hover {
+    margin-right: 12px;
 }
 
 .submit {
     background-color: var(--primary);
     border: none;
     color: var(--white);
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.4rem;
     text-transform: uppercase;
     cursor: pointer;
     padding: 1rem;
+}
+
+.submit:hover {
+    background-color: #007468;
+    transition: 300ms;
+    font-weight: 700;
 }

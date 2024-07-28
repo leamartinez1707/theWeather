@@ -1,16 +1,21 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { countries } from "../../data/countries";
 import styles from './Form.module.css'
 import { SearchType } from "../../types";
+import { Alert } from "../Alert/Alert";
 
 
-export default function Form() {
+type FormProps = {
+    fetchWeather: (search: SearchType) => Promise<void>
+}
+
+export default function Form({ fetchWeather }: FormProps) {
 
     const [search, setSearch] = useState<SearchType>({
         city: '',
         country: ''
     })
-
+    const [alert, setAlert] = useState('')
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
         setSearch({
             ...search,
@@ -18,16 +23,28 @@ export default function Form() {
         })
     }
 
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (Object.values(search).includes('')) {
+            setAlert('Todos los campos son obligatorios')
+            return;
+        }
+        fetchWeather(search)
+    }
     return (
-        <form className={styles.form}>
-            <div>
+        <form
+            onSubmit={handleSubmit}
+            className={styles.form}
+        >
+
+
+            {alert && <Alert>{alert}</Alert>}
+            <div className={styles.field}>
                 <label htmlFor="city">Ciudad:</label>
                 <input
                     onChange={handleChange}
-                    type="text" id="city" name="city" placeholder="Ciudad" value={search.city} />
+                    type="text" id="city" name="city" placeholder="Montevideo, Miami, New York" value={search.city} />
             </div>
-
-
             <div className={styles.field}>
                 <label htmlFor="country">País:</label>
                 <select id="country" onChange={handleChange} name="country" value={search.country}>

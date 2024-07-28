@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: #00000054;
+    border-radius: 2rem;
+}
+
+.current {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.weather {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}

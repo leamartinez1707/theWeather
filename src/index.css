@@ -1,7 +1,7 @@
 :root {
 
   --white: #fff;
-  --primary: #f59e0b;
+  --primary: #00b3a4;
 
 }
 
@@ -11,7 +11,9 @@ html {
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-image: url('/bg_clima.jpg');
+  /* background-image: url('/bg_clima.webp'); */
+  background: linear-gradient(rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)), url('/bg_clima.webp');
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
